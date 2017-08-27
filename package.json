@@ -15,5 +15,13 @@
   "bugs": {
     "url": "https://github.com/thenrikie/tsp/issues"
   },
-  "homepage": "https://github.com/thenrikie/tsp#readme"
+  "homepage": "https://github.com/thenrikie/tsp#readme",
+  "dependencies": {
+    "request": "^2.81.0",
+    "request-promise": "^4.2.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.1",
+    "mocha": "^3.5.0"
+  }
 }
