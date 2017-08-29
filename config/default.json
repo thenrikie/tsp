@@ -2,7 +2,7 @@
 {
 	// options object for createclient https://github.com/NodeRedis/node_redis#rediscreateclient
 	"redis" : {
-		"host": "localhost",
+		"host": "redis",
 		"port": "6379"
 	},
 

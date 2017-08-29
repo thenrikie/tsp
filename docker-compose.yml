@@ -1,0 +1,12 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+     - "3000:3000"
+    volumes:
+     - ./config:/tsp/config
+    environment:
+      NODE_ENV:
+  redis:
+    image: "redis:alpine"
