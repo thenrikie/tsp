@@ -1,7 +1,6 @@
 'use strict';
 
-const redis = require("redis");
-const client = redis.createClient();
+const client = require('../redisClient');
 
 function getRoute(req, res, next){
 

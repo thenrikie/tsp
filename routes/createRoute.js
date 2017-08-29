@@ -1,7 +1,6 @@
 'use strict';
 
-const redis = require("redis");
-const client = redis.createClient();
+const client = require('../redisClient');
 const uuidv4 = require('uuid/v4');
 const sortDestinations = require('../google-map/sortDestinations').sortDestinations;
 const getRouteInfo = require('../google-map/getRouteInfo').getRouteInfo;

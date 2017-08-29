@@ -6,6 +6,10 @@
 		"port": "6379"
 	},
 
+	"web": {
+		"port": 3000
+	},
+
 	"google": {
 		"directionAPIUrl": "https://maps.googleapis.com/maps/api/directions/json",
 		"distanceAPIUrl": "https://maps.googleapis.com/maps/api/distancematrix/json",
