@@ -20,3 +20,10 @@ you can create a json file in config folder. (i.e. test.json)
 To use this config, you can use the command
 
 `sudo NODE_ENV=test docker-compose up`
+
+## Test
+
+You can run unit tests by using the command
+`npm test`
+
+If you test locally please make use you do npm install first
