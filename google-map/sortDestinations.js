@@ -35,12 +35,18 @@ function sortDestinations(origin, destinations){
 
 function _sortPoints(data){
 
+	// handle top level error from google api
+	if(!data || data.status !== 'OK'){
+		throw { message: 'Google API Error', googleAPIStatus: _.get(data, 'status') };
+	}
+
 	// make sure data.rows[0].elements exists
 	const elements = _.get(data, 'rows[0].elements', []);
 
 	// throw error if there any of the status is not OK
-	if(elements.find(e => e.status !== 'OK')){
-		throw { message: 'Some destinations cannot be reached'}
+	const firstError = elements.find(e => e.status !== 'OK');
+	if(firstError){
+		throw { message: 'Some destinations cannot be reached', firstElementError: firstError.status }
 	}
 
 	// make an array of { oriIndex, distance } and sort it by distance

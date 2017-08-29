@@ -8,7 +8,8 @@ describe('sortPoints', () => {
 
 	it('should return empty array if no destinations provided', () => {
 
-		const dests = {rows:[]};
+		const dests = {rows:[], status: 'OK'};
+
 		expect(sortPoints(dests)).to.deep.equal([]);
 	});
 
@@ -22,7 +23,8 @@ describe('sortPoints', () => {
 					},
 					status: 'OK'
 				}]
-			}]
+			}],
+			status: 'OK'
 		};
 
 		expect(sortPoints(dests)).to.deep.equal([0]);
@@ -50,7 +52,8 @@ describe('sortPoints', () => {
 					},
 					status: 'OK'
 				}]
-			}]
+			}],
+			status: 'OK'
 		};
 
 		expect(sortPoints(dests)).to.deep.equal([0,1,2]);
@@ -78,7 +81,8 @@ describe('sortPoints', () => {
 					},
 					status: 'OK'
 				}]
-			}]
+			}],
+			status: 'OK'
 		};
 
 		expect(sortPoints(dests)).to.deep.equal([2,1,0]);
@@ -106,7 +110,8 @@ describe('sortPoints', () => {
 					},
 					status: 'OK'
 				}]
-			}]
+			}],
+			status: 'OK'
 		};
 
 		expect(sortPoints(dests)).to.deep.equal([1,0,2]);
@@ -131,9 +136,27 @@ describe('sortPoints', () => {
 					},
 					status: 'OK'
 				}]
-			}]
+			}],
+			status: 'OK'
 		};
 
-		expect(() => sortPoints(dests)).to.throw();
+		expect(() => sortPoints(dests)).to.throw().to.deep.equal({ 
+			message: 'Some destinations cannot be reached',
+			firstElementError: 'NOT_FOUND'
+		});
+	});
+
+
+	it('should throw an error there is if any top level error', () => {
+
+		const dests = {
+			rows: [],
+			status: 'OVER_QUERY_LIMIT'
+		};
+
+		expect(() => sortPoints(dests)).to.throw().to.deep.equal({ 
+			message: 'Google API Error', 
+			googleAPIStatus: 'OVER_QUERY_LIMIT'
+		});
 	});
 });
