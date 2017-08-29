@@ -10,7 +10,7 @@ installed.
 Older version compatible with docker compose file format version 3 may work but is not tested.
 
 ## Start the app
-`sudo b617d2ca-6285-482b-a082-9988d098bee0 up`
+`sudo docker-compose up`
 
 It should work without any configuration and you should be able to access the app at
 
