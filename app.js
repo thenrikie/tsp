@@ -24,3 +24,9 @@ client.on('connect',() => {
 	  console.log(`Example app listening on port ${config.web.port}!`)
 	});
 });
+
+// any other error
+app.use(function (err, req, res, next) {
+	console.log(err)
+	res.status(500).json({ error: err.message })
+});

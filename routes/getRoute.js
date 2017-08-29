@@ -12,11 +12,20 @@ function getRoute(req, res, next){
 			return Promise.reject({ httpCode: 404, message: 'Token not found'})
 		}
 
-		res.status(200).json(JSON.parse(value));
+		const data = JSON.parse(value);
+		let httpCode = 200;
+
+		// if status from api is failed make change the http code to 400
+		if (data.status === 'failure'){
+			httpCode = 400;
+		}
+
+		res.status(httpCode).json(data);
 
 	}).catch(err => {
 
-		res.status(err.httpCode || 400).json(
+		//404 not found or other internal error
+		res.status(err.httpCode || 500).json(
 			{
 				"status": "failure",
 				"error": err.message

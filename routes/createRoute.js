@@ -17,10 +17,10 @@ function createRoute(req, res, next){
 
 		//basic request body type checking
 		if(!Array.isArray(req.body)){
-			return Promise.reject({ message: 'Request body must be an array and the header Content-Type must be application/json'})
+			return Promise.reject({ httpCode: 400, message: 'Request body must be an array and the header Content-Type must be application/json'})
 		}
 		if(req.body.length < 2){
-			return Promise.reject({ message: 'You must provide more at least one drop off point'})
+			return Promise.reject({ httpCode: 400, message: 'You must provide more at least one drop off point'})
 		}
 
 		//return the token to client once it is saved to redis
@@ -31,7 +31,7 @@ function createRoute(req, res, next){
 
 	}).catch(err => {
 
-		res.status(400).json({ error: err.message });
+		res.status(err.httpCode || 500).json({ error: err.message });
 
 	});
 }
