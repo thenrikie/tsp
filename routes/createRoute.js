@@ -16,11 +16,19 @@ function createRoute(req, res, next){
 
 	client.setAsync(token, inProgress).then(() => {
 
-		//handle the routes async and once the result is coming back put it into redis
-		handleRoute(token, req.body);
+		//basic request body type checking
+		if(!Array.isArray(req.body)){
+			return Promise.reject({ message: 'Request body must be an array and the header Content-Type must be application/json'})
+		}
+		if(req.body.length < 2){
+			return Promise.reject({ message: 'You must provide more at least one drop off point'})
+		}
 
 		//return the token to client once it is saved to redis
 		res.status(200).json({ token });
+
+		//handle the routes async and once the result is coming back put it into redis
+		handleRoute(token, req.body);
 
 	}).catch(err => {
 

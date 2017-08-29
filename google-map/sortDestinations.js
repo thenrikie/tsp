@@ -1,6 +1,7 @@
 'use strict';
 
-const GOOGLE_DISTANCE_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+const config = require('config');
+const GOOGLE_DISTANCE_API_URL = config.google.distanceAPIUrl;
 const request = require('request-promise');
 const _ = require('lodash');
 
@@ -17,7 +18,8 @@ function sortDestinations(origin, destinations){
 		uri: GOOGLE_DISTANCE_API_URL,
 		qs: {
 			origins: origin.join(','),
-			destinations: destinations.map(dest => dest.join(',')).join('|')
+			destinations: destinations.map(dest => dest.join(',')).join('|'),
+			key: config.google.apiKey
 		},
 		json: true
 	};

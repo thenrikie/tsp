@@ -1,0 +1,14 @@
+// default config file
+{
+	// options object for createclient https://github.com/NodeRedis/node_redis#rediscreateclient
+	"redis" : {
+		"host": "localhost",
+		"port": "6379"
+	},
+
+	"google": {
+		"directionAPIUrl": "https://maps.googleapis.com/maps/api/directions/json",
+		"distanceAPIUrl": "https://maps.googleapis.com/maps/api/distancematrix/json",
+		//"apiKey" : "....." // will use api key to make api call if provided
+	}
+}

@@ -5,9 +5,10 @@ const app = express();
 const bodyParser = require('body-parser');
 const createRoute = require('./routes/createRoute');
 const getRoute = require('./routes/getRoute');
+const config = require('config');
 
 const redis = require("redis");
-const client = redis.createClient();
+const client = redis.createClient(config.redis);
 
 const bluebird = require('bluebird');
 bluebird.promisifyAll(redis.RedisClient.prototype);

@@ -1,6 +1,7 @@
 'use strict';
 
-const GOOGLE_DIRECTION_API_URL = 'https://maps.googleapis.com/maps/api/directions/json';
+const config = require('config');
+const GOOGLE_DIRECTION_API_URL = config.google.directionAPIUrl;
 const request = require('request-promise');
 const _ = require('lodash');
 
@@ -11,8 +12,6 @@ const _ = require('lodash');
  * @param {Array} destination - destionation in [lat, long]
  * @return {Promise} time and distance information { time, distance }
  */
-
-
 function getRouteInfo(origin, waypoints, destination){
 	
 	const opts = {
@@ -21,6 +20,7 @@ function getRouteInfo(origin, waypoints, destination){
 			origin: origin.join(','),
 			waypoints: waypoints.map(dest => dest.join(',')).join('|'),
 			destination: destination.join(','),
+			key: config.google.apiKey
 		},
 		json: true
 	};
