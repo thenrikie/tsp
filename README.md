@@ -38,3 +38,7 @@ You can run unit tests by using the command
 `npm test`
 
 If you test locally please make use you do npm install first
+
+## Horizontally scalable
+You can start as many app server as you want provided that they are all pointing to the same redis server.
+For the redis server you can set up a redis cluster to accommodate a larger tariff volume.
