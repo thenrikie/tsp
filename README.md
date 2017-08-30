@@ -7,7 +7,7 @@ docker-compose version 1.15.0, build e12f3b9
 
 installed. 
 
-Older version compatible with docker compose file format version 3 may work but is not tested.
+Older version that is compatible with docker compose file format version 3 may work but is not tested.
 
 ## Start the app
 `sudo docker-compose up`
@@ -25,7 +25,7 @@ To use this config, you can use the command
 
 ## To change the port
 
-You can change to forwarding port to something else other than 3000 by change the docker-compose.yml file
+You can change to forwarding port to something else other than 3000 by changing the docker-compose.yml file
 
 ```
     ports:
@@ -37,7 +37,7 @@ You can change to forwarding port to something else other than 3000 by change th
 You can run unit tests by using the command
 `npm test`
 
-If you test locally please make use you do npm install first
+If you test locally please make use you do `npm install` first
 
 ## Horizontally scalable
 You can start as many app server as you want provided that they are all pointing to the same redis server.
